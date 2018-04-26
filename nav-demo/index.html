@@ -49,7 +49,8 @@
                 hash[key] = x
                 img2.src = 'http://'+ x +'/favicon.ico'
                 img2.onerror = function(xxx){
-                    xxx.target.src = '//i.loli.net/2018/04/04/5ac4919412dc2.gif'
+                    img2.src = 'http://favicon.byi.pw/?url='+ x +''
+                    xxx.target.src = 'http://favicon.byi.pw/?url='+x+''
                 }
                 localStorage.setItem('uuu', JSON.stringify(hash))  //把变更的hash存下来。
             }
@@ -64,7 +65,8 @@
                 imgUU.src = '//i.loli.net/2018/04/04/5ac4919412dc2.gif'
             }
             imgUU.onerror = function(xxx){
-                xxx.target.src = '//i.loli.net/2018/04/04/5ac4919412dc2.gif'
+                imgUU.src = 'http://favicon.byi.pw/?url='+domain+''
+                xxx.target.src = 'http://favicon.byi.pw/?url='+domain+''
             }
             return imgUU
         }
@@ -114,7 +116,7 @@
             var hashInLocalStorage = getFromLocalStorage('uuu')
             if(hashInLocalStorage){
                 hash = hashInLocalStorage
-            }
+            }                                   //js判断是否为字母
             return {
                 "keys": keys,
                 "hash": hash
@@ -140,7 +142,6 @@
                     kbd.className = 'key'
                     kbd.appendChild(imgUU)
                     kbd.appendChild(button)
-                
                     div.appendChild(kbd)
                 }
             /*dcRow = dontclick[index]
@@ -157,10 +158,14 @@
         
         function listenToUser(hash){
             document.onkeypress = function(xzkjcnxlkcjlk){
-            var key = xzkjcnxlkcjlk['key'] //q w e
-            var website = hash[key]
-            //location.href = 'http://'+website
-            window.open('http://'+website, '_blank')
+                var str = /[_a-zA-Z]/;
+                var key = xzkjcnxlkcjlk['key'] //q w e
+                console.log(key)
+                if((key>='a'&&key<='z')||(key>='A'&&key<='Z')){
+                    var website = hash[key]
+                    //location.href = 'http://'+website
+                    window.open('http://'+website, '_blank')
+                }
             }
         }
     </script>
